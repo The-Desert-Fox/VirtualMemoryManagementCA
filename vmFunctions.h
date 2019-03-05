@@ -13,9 +13,9 @@ void displayTable(vmTable** viewTable);
 
 void printFileTable(vmTable** printTable);
 
-void displayPhysicalMemory(char[] physicalMemory);
+void displayPhysicalMemory(unsigned short int *physicalMemory[]);
 
 // Every char is one byte. Just randomly make 2048 to 20480 that way.
-void printPhysicalMemory(char[] physicalMemory);
+void printPhysicalMemory(unsigned short int *physicalMemory[]);
 
 #endif
