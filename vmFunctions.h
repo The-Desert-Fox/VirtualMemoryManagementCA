@@ -4,9 +4,7 @@
 #define vmFunctions
 
 typedef struct vmTable{
-  int *pageNumberArray;
-  int *frameNumberArray;
-  int length;
+  short *frameNumberArray;
 }vmTable;
 
 vmTable* createVMTable(int length);
