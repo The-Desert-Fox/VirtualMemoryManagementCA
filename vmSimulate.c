@@ -98,16 +98,19 @@ int searchTLB(int pn, unsigned short* tlb, int tlbsize){
 	for(int i = 0; i < tlbsize * 2; i += 2){
 		if(tlb[i] == pn){
 			printf("TLB hit. Returning frame number\n");
-			return tlb[i + 1] >> 8;
+			return tlb[i + 1] ;
+		}
+		else{
+			return 1;
 		}
 	}
-	return 1;
 }
 
 int searchPT(int pn, unsigned short* pageTable, int PTsize){
 	int point = pageTable[pn] - 1;
 	return point >> 8;
 }
+
 
 int main(int argc, char *argv[]){
 // Creating array of array of unsigned shorts
@@ -148,9 +151,20 @@ int main(int argc, char *argv[]){
 			printf("TLB miss\n");
 			printf("Searching page table\n");
 			tlbRes = searchPT(pn, pageTable, PAGETABLE_SIZE);
-			if(tlbRes == -1){
+			if(tlbRes == -1)
+			{
 				printf("That page and Frame is not in use\n");
-			}else{
+			}
+			else if(tlbRes % 256 == 3)
+			{
+				//Move discspace1 to physicalmemory
+			}
+			else if(tlbRes % 256 == 4)
+			{
+				//Move discspace2 to physicalmemory
+			}
+			else
+			{
 				printf("Page number: %d\t Frame Number: %d\n", pn, tlbRes);
 				printf("Bitshifting frame number 8 bits to the right then adding offset\n");
 				int phyAddr = (tlbRes << 8) + off;
