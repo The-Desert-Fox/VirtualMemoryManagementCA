@@ -15,9 +15,11 @@ This project is the design and implementation of a standalone virtual memory man
 
 First 8 most significant bits are the physical address.
 Least significant bit tells us if the page is in use.(1/Yes, 0/No)
-Second least significant tells us if the page is on the disc or not.(1/yes, 0/no)
+Second least significant tells us if the page is on the disc or not and which section it is in.
 
 # Links
 [Github file used to help](https://github.com/zedtran/VirtualMemoryManagementSim)
 
 [Makefile tutorial used](http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/)
+
+[Link to my github](https://github.com/The-Desert-Fox/VirtualMemoryManagementCA)
